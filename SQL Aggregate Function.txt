@@ -1,0 +1,62 @@
+Formulate Questions and Find Answers
+1. What are the most popular genres in different countries?
+
+sql code
+
+SELECT country, listed_in, COUNT(*) as count
+FROM netflix_titles
+WHERE country IS NOT NULL
+GROUP BY country, listed_in
+ORDER BY country, count DESC;
+
+
+2. How many TV shows vs. movies are released each year?
+sql code
+SELECT release_year, type, COUNT(*) as count
+FROM netflix_titles
+GROUP BY release_year, type
+ORDER BY release_year;
+
+*From the answers it shows popular genres vary significantly by country, 
+*There has been an increase in both TV shows and movies,
+
+
+Cool Facts Hidden in the Data
+
+Most Common Ratings
+
+sql code
+
+SELECT rating, COUNT(*) as count 
+FROM netflix_titles 
+GROUP BY rating 
+ORDER BY count DESC 
+LIMIT 5;
+
+Average Duration of Movies
+
+sql code
+
+SELECT AVG(CAST(SUBSTR(duration, 1, LENGTH(duration) - 4) AS INTEGER)) as avg_duration 
+FROM netflix_titles 
+WHERE type = 'Movie';
+Formulate Questions and Find Answers
+
+1. What are the most popular genres in different countries?
+
+sql code
+
+SELECT country, listed_in, COUNT(*) as count
+FROM netflix_titles
+WHERE country IS NOT NULL
+GROUP BY country, listed_in
+ORDER BY country, count DESC;
+
+2. How many TV shows vs. movies are released each year?
+
+sql code
+
+SELECT release_year, type, COUNT(*) as count
+FROM netflix_titles
+GROUP BY release_year, type
+ORDER BY release_year;
